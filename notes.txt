@@ -49,3 +49,5 @@ service firebase.storage {
     }
   }
 }
+
+- with the noSQL database I dont have to beforehand create the relational database tables, columns and fields
