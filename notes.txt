@@ -51,3 +51,7 @@ service firebase.storage {
 }
 
 - with the noSQL database I dont have to beforehand create the relational database tables, columns and fields
+
+- version 6.0 in react-router-dom we use 'Router' instead of 'Switch'
+- also we use 'element' instead of 'component' in the routes
+- 85
