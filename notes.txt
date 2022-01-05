@@ -59,9 +59,16 @@ service firebase.storage {
 - in SignIn.jsx in setFormData() I have to use a callback (prev)=>({...prev, }) because otherwise after all typed character the state would be renewed, so to store a whole word in the state I have to ...pread the previous state
 
 88
+- React Toastify
+https://github.com/fkhadra/react-toastify
+- I have to import it in App.js
 
+89
+- If we are logged in and refresh the page the site will tell us that we are 'not logged in' because the site is rendered before getting the data from firebase
+- It could be avoided by creating private routes
 
-
+90
+- 
 
 
 

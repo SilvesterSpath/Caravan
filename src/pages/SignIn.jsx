@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import {toast} from 'react-toastify'
 import {Link, useNavigate} from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
@@ -10,6 +11,8 @@ function SignIn() {
     email: '',
     password: ''
   })
+
+  
   
   const {email, password} = formData
 
@@ -34,7 +37,7 @@ function SignIn() {
         navigate('/')
       }
     } catch (error) {
-      console.log(error);
+      toast.error('Bad User Credentials');
     }   
   }
 
@@ -44,7 +47,7 @@ function SignIn() {
         <header>
           <p className="pageHeader"> Welcome Back!</p>
         </header>
-
+        
         <main>
           <form onSubmit={onSubmit}>
             <input type="text" className="emailInput" placeholder='Email' id='email' value={email} onChange={onChange}/>
