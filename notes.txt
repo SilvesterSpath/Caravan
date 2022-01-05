@@ -58,7 +58,7 @@ service firebase.storage {
 84
 - in SignIn.jsx in setFormData() I have to use a callback (prev)=>({...prev, }) because otherwise after all typed character the state would be renewed, so to store a whole word in the state I have to ...pread the previous state
 
-
+88
 
 
 
