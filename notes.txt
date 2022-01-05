@@ -54,4 +54,18 @@ service firebase.storage {
 
 - version 6.0 in react-router-dom we use 'Router' instead of 'Switch'
 - also we use 'element' instead of 'component' in the routes
-- 85
+
+84
+- in SignIn.jsx in setFormData() I have to use a callback (prev)=>({...prev, }) because otherwise after all typed character the state would be renewed, so to store a whole word in the state I have to ...pread the previous state
+
+
+
+
+
+
+
+
+
+
+
+https://github.com/bradtraversy/house-marketplace
