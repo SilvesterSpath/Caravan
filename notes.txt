@@ -56,7 +56,8 @@ service firebase.storage {
 - also we use 'element' instead of 'component' in the routes
 
 84
-- in SignIn.jsx in setFormData() I have to use a callback (prev)=>({...prev, }) because otherwise after all typed character the state would be renewed, so to store a whole word in the state I have to ...pread the previous state
+- in SignIn.jsx in setFormData() I have to use a callback (prev)=>({...prev, }) because otherwise after all typed characters the state would be renewed, so to store a whole word in the state I have to ...spread the previous state
+- The second parenthesis are for the return of the object 
 
 88
 - React Toastify
@@ -68,7 +69,9 @@ https://github.com/fkhadra/react-toastify
 - It could be avoided by creating private routes
 
 90
-- 
+- 'changeDetails' is basically a button which enables the form to show
+
+91
 
 
 
