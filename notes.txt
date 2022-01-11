@@ -72,6 +72,9 @@ https://github.com/fkhadra/react-toastify
 - 'changeDetails' is basically a button which enables the form to show
 
 91
+- gitignore not working solution:
+(git rm --cached system/application/config/config.php modules/recaptcha/config/recaptcha.php)
+
 
 
 
