@@ -2,8 +2,11 @@
 
 ./notes.txt
 
+
 # dependencies
 /node_modules
+/src/assets
+/src/firebase.config.js
 /.pnp
 .pnp.js
 
