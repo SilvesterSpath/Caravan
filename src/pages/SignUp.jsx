@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import { useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
@@ -6,6 +6,7 @@ import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
 import {db} from '../firebase.config.js'
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
+import OAth from '../components/OAth.jsx';
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false)
@@ -81,7 +82,7 @@ function SignUp() {
             </div>
           </form>
 
-          {/* Google OAuth */}
+          <OAth/>
 
           <Link to='/sign-in' className="registerLink">Sign In Instead</Link>
         </main>
