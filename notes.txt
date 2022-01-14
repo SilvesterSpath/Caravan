@@ -74,6 +74,32 @@ https://github.com/fkhadra/react-toastify
 91
 - gitignore not working solution:
 (git rm --cached system/application/config/config.php modules/recaptcha/config/recaptcha.php)
+- React-router 6 changed a lot of things
+- 'CTRL + P' opens settings.json
+- in PrivateRoute.jsx we bring in 'Navigate' not 'useNavigate' the hook but what was the old 'Redirect' component, and we also bring in 'Outlet' which allows us to use childElements
+- Outlet is whatever happens to be in the PrivateRoute child component
+- This workflow is because of the <Routes/> component
+- in the custom hook useAuthStatus.js 'onAuthStateChanged' is fires of when the authentication state is changes
+- checkingStatus is true until we check in than is set to false (like 'loading..') and also during the truthy state we show a spinner
+- cleanup memoryleak with useRef()
+
+
+// Protected routes in v6
+// https://stackoverflow.com/questions/65505665/protected-route-with-firebase
+
+// Fix memory leak warning
+// https://stackoverflow.com/questions/59780268/cleanup-memory-leaks-on-an-unmounted-component-in-react-hooks
+
+
+
+
+
+
+
+
+
+
+
 
 
 
