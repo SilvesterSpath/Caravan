@@ -16,6 +16,7 @@ Firebase Setup For House Marketplace
 - the signed in users are listed in the authentication tab
 - CEL (Common Expression Language)
 - Firebase rules:
+?(Gist: gist.github.com/bradtraversy)
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -82,6 +83,12 @@ https://github.com/fkhadra/react-toastify
 - in the custom hook useAuthStatus.js 'onAuthStateChanged' is fires of when the authentication state is changes
 - checkingStatus is true until we check in than is set to false (like 'loading..') and also during the truthy state we show a spinner
 - cleanup memoryleak with useRef()
+
+94
+- with useParams I can use the and of the url like from '/categories/rent' rent
+- the name in the 'useParams' object will be the exact name that I gave in the App.js, where I connected the <Category/> component 
+- If I use async - await in a useEffect hook I have to use another function inside of the useEffect, because the first function can't be async
+- 'listingsRef going to be a reference to the collection not the document
 
 
 // Protected routes in v6
