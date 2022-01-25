@@ -3,7 +3,7 @@ import {ReactComponent as DeleteIcon} from '../assets/svg/deleteIcon.svg'
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathIcon from '../assets/svg/bathIcon.svg'
 
-function ListingItem({listing, id}) {
+function ListingItem({listing, id, onDelete}) {
   return <li className='categoryListing'>
     <Link to={`/category/${listing.type}/${id}`} className='categoryListingLink'>
       <img className='categoryListingImg' src={listing.imageUrls[0]} alt={listing.name} />
@@ -15,8 +15,21 @@ function ListingItem({listing, id}) {
         <p className="categoryListingPrice">{listing.offer ? `Offer: $${listing.discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` : listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{listing.type === 'rent' && ' /Month'}</p>
         <p className="categoryListingPrice">Regular Price: ${listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         {listing.type === 'rent' && ' /Month'}</p>
+        <div className="categoryListingInfoDiv">
+          <img src={bedIcon} alt="bed" />
+          <p className="categoryListingInfoText">
+            {listing.bed > 1 ? `${listing.bed} Bedrooms`: '1 Bedroom'}
+          </p>
+          <img src={bathIcon} alt="bath" />
+          <p className="categoryListingInfoText">
+          {listing.bath > 1 ? `${listing.bath} Baths`: '1 Bath'}
+          </p>
+        </div>
       </div>
     </Link>
+    {onDelete && (
+      <DeleteIcon className='removeIcon' fill='rgb(231, 76, 60)' onClick={()=> onDelete(listing.id, listing.name)} />
+    )}
   </li>;
 }
 
