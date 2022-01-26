@@ -724,11 +724,10 @@ button {
 .formInput,
 .formInputAddress,
 .formInputName,
-.formInputSmall,
 .formInputFile,
 .formButtonActive {
   cursor: pointer;
-  max-width: 130px;
+  max-width: 300px;
   padding: 0.9rem 3rem;
   background-color: #ffffff;
   font-weight: 600;
@@ -739,6 +738,21 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+.formInputSmall {
+  cursor: pointer;
+  max-width: 150px;
+  padding: 0.9rem 3rem;
+  background-color: #ffffff;
+  font-weight: 600;
+  border-radius: 1rem;
+  font-size: 1rem;
+  margin: 0.5rem 0.5rem 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .formButtonActive {
   background-color: #00cc66;
   color: #ffffff;

@@ -100,6 +100,9 @@ https://github.com/fkhadra/react-toastify
   - in the form 'onChange' and 'onClick' also calls onMutate()
   - nullish coalescing operator: ?? if the value on the left is null than use this value
 
+100
+  - 5:02
+
 
 // Protected routes in v6
 // https://stackoverflow.com/questions/65505665/protected-route-with-firebase

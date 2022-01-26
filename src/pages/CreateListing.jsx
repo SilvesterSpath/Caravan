@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from 'react'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import {useNavigate} from 'react-router-dom'
 import Spinner from '../components/Spinner'
+import {toast} from 'react-toastify'
 
 function CreateListing() {
   const [geolocationEnabled, setGeolocationEnabled] = useState(true)
@@ -47,7 +48,19 @@ function CreateListing() {
 
   const onSubmit = (e)=>{
     e.preventDefault()
-    console.log(formData);
+
+    setLoading(true)
+
+    if(discountPrice >= regularPrice){
+      setLoading(false)
+      toast.error('Discounted price needs to be less than regular price')
+      return
+    }
+
+    if(images.length > 6){
+      setLoading(false)
+      toast.error('Max 6 images')
+    }
 
   }
 
@@ -168,7 +181,7 @@ function CreateListing() {
       <label className="formLabel">Images</label>
       <p className="imagesInfo">The first image will be the cover (max 6)</p>
       <input type="file" className="formInputFile" id='images' onChange={onMutate} max='6' accept='.jpg,.png,.jpeg'
-       multiple required/>
+       multiple required />
        <button className="primaryButton createListingButton" type='submit'>Create Listing</button>
       </form>
     </main>
