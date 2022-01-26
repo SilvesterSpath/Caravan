@@ -727,6 +727,7 @@ button {
 .formInputSmall,
 .formInputFile,
 .formButtonActive {
+  max-width: 130px;
   padding: 0.9rem 3rem;
   background-color: #ffffff;
   font-weight: 600;
@@ -736,6 +737,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  -moz-appearance: textfield;
 }
 .formButtonActive {
   background-color: #00cc66;

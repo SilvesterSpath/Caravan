@@ -93,6 +93,12 @@ https://github.com/fkhadra/react-toastify
 98
   - we use 'useRef' for doing the 'isMounted' thing to avoiding the memory leak warning
 
+99
+  - the form for listing will be created mostly by forms
+  - in the button html element the 'id' is important because when we set out state on the onChange or onClick's its going to look for the id to be the key
+  - be sure to match this to whatever the piece of state is
+  - in the form 'onChange' and 'onClick' also calls onMutate()
+
 
 // Protected routes in v6
 // https://stackoverflow.com/questions/65505665/protected-route-with-firebase
