@@ -4,7 +4,7 @@ import {useNavigate} from 'react-router-dom'
 import Spinner from '../components/Spinner'
 
 function CreateListing() {
-  const [geolocationEnabled, setGeolocationEnabled] = useState(false)
+  const [geolocationEnabled, setGeolocationEnabled] = useState(true)
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     type: 'rent',
@@ -17,7 +17,7 @@ function CreateListing() {
     offer: false,
     regularPrice: 0,
     discountPrice: 0,
-    images: [],
+    images: {},
     latitude: 0,
     longitude: 0 
   })
@@ -47,11 +47,36 @@ function CreateListing() {
 
   const onSubmit = (e)=>{
     e.preventDefault()
+    console.log(formData);
 
   }
 
   const onMutate = (e)=>{
+    let boolean = null
 
+    if(e.target.value === 'true'){
+      boolean = true
+    }
+    if(e.target.value === 'false'){
+      boolean = false
+    }
+
+    // Files
+
+    if(e.target.files){
+      console.log('files:', e.target.files);
+      setFormData((prev)=>({
+        ...prev, 
+        images: e.target.files
+      }))
+    }
+    // Text/Booleans/Numbers
+    if(!e.target.files){
+      setFormData((prev)=>({
+        ...prev,
+        [e.target.id]: boolean ?? e.target.value
+      }))
+    }
   }
 
   if(loading){
@@ -96,13 +121,13 @@ function CreateListing() {
         </div>
         <label className='formLabel'>Trailer</label>
         <div className="formButtons">
-          <button className={trailer ? 'formButtonActive': 'formButton'} type='button' id='trailer' value={trailer} onClick={onMutate} >Yes</button>
-          <button className={!trailer ? 'formButtonActive': 'formButton'} type='button' id='trailer' value={trailer} onClick={onMutate} >No</button>
+          <button className={trailer ? 'formButtonActive': 'formButton'} type='button' id='trailer' value={true} onClick={onMutate} >Yes</button>
+          <button className={!trailer && trailer !== null ? 'formButtonActive': 'formButton'} type='button' id='trailer' value={false} onClick={onMutate} >No</button>
         </div>
         <label className='formLabel'>Furnished</label>
         <div className="formButtons">
-          <button className={furnished ? 'formButtonActive': 'formButton'} type='button' id='furnished' value={furnished} onClick={onMutate} >Yes</button>
-          <button className={!furnished ? 'formButtonActive': 'formButton'} type='button' id='furnished' value={furnished} onClick={onMutate} >No</button>
+          <button className={furnished ? 'formButtonActive': 'formButton'} type='button' id='furnished' value={true} onClick={onMutate} >Yes</button>
+          <button className={!furnished && furnished !== null ? 'formButtonActive': 'formButton'} type='button' id='furnished' value={false} onClick={onMutate} >No</button>
         </div>
 
         <label className='formLabel'>Address</label>
@@ -121,8 +146,30 @@ function CreateListing() {
           </div>
         )}
 
-        
-        
+      <label className="formLabel">Offer</label>
+      <div className="formButtons">
+        <button className={offer ? 'formButtonActive' : 'formButton'} type='button' id='offer' value={true} onClick={onMutate}>Yes</button>
+        <button className={!offer && offer !== null ? 'formButtonActive' : 'formButton'} type='button' id='offer' value={false} onClick={onMutate}>No</button>
+      </div>
+      <label className="formLabel">Regular Price</label>
+      <div className="formPriceDiv">
+        <input type="number" className='formInputSmall' id='regularPrice'  value={regularPrice} onChange={onMutate} min='50' max='75000000' required/>
+        {formData.type === 'rent' && (
+          <p className='formPriceText'>$ / Month</p>
+        )}
+      </div>
+      {offer && (
+        <>
+          <label className="formLabel">Discounted Price</label>
+          <input type="number" className="formInputSmall" id='discountPrice' value={discountPrice} onChange={onMutate} min='50' max='75000000' required/>
+        </>
+      )}
+
+      <label className="formLabel">Images</label>
+      <p className="imagesInfo">The first image will be the cover (max 6)</p>
+      <input type="file" className="formInputFile" id='images' onChange={onMutate} max='6' accept='.jpg,.png,.jpeg'
+       multiple required/>
+       <button className="primaryButton createListingButton" type='submit'>Create Listing</button>
       </form>
     </main>
     

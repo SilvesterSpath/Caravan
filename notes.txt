@@ -98,6 +98,7 @@ https://github.com/fkhadra/react-toastify
   - in the button html element the 'id' is important because when we set out state on the onChange or onClick's its going to look for the id to be the key
   - be sure to match this to whatever the piece of state is
   - in the form 'onChange' and 'onClick' also calls onMutate()
+  - nullish coalescing operator: ?? if the value on the left is null than use this value
 
 
 // Protected routes in v6
