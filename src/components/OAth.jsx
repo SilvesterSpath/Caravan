@@ -26,9 +26,9 @@ const OAth = () => {
           name: user.displayName,
           email: user.email,
           timeStamp: serverTimestamp()
-        })
-        navigate('/')
+        })        
       }
+      navigate('/profile')
     } catch (error) {
       toast.error('Could not authorize with Google')
     }

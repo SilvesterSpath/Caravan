@@ -5,7 +5,7 @@ import sellCategoryImage from '../assets/jpg/sellCategoryImage.jpg'
 function Explore() {
   return (
     <div className='explore'>
-      <h1>Explore</h1>
+      
       <header>
         <p className="pageHeader">Explore</p>
         <main>
@@ -15,11 +15,11 @@ function Explore() {
           <div className="exploreCategories">
     {        <Link to={'/category/rent'}>
               <img src={rentCategoryImage} alt="rent" className='exploreCategoryImg' />
-              <p className="exploreCategoryName">Places for rent</p>
+              <p className="exploreCategoryName">Campers for rent</p>
             </Link>}
     {        <Link to={'/category/sale'}>
               <img src={sellCategoryImage} alt="sell" className='exploreCategoryImg' />
-              <p className="exploreCategoryName">Places for sale</p>
+              <p className="exploreCategoryName">Campers for sale</p>
             </Link>}
           </div>
         </main>

@@ -90,8 +90,8 @@ https://github.com/fkhadra/react-toastify
 - If I use async - await in a useEffect hook I have to use another function inside of the useEffect, because the first function can't be async
 - 'listingsRef going to be a reference to the collection not the document
 
-96
-7:27
+98
+  - we use 'useRef' for doing the 'isMounted' thing to avoiding the memory leak warning
 
 
 // Protected routes in v6
