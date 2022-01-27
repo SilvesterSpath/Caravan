@@ -101,7 +101,7 @@ https://github.com/fkhadra/react-toastify
   - nullish coalescing operator: ?? if the value on the left is null than use this value
 
 100
-  - 5:02
+  - if I use the geoapify third party api then when I fill out the latitude and longitude varibles, I have to use a '?' after data.features[0]?.geometry
 
 
 // Protected routes in v6

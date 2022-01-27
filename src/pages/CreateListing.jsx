@@ -46,7 +46,7 @@ function CreateListing() {
     // eslint-disable-next-line react-hooks/exhaustive-deps    
   }, [ isMounted ])
 
-  const onSubmit = (e)=>{
+  const onSubmit = async (e)=>{
     e.preventDefault()
 
     setLoading(true)
@@ -60,7 +60,36 @@ function CreateListing() {
     if(images.length > 6){
       setLoading(false)
       toast.error('Max 6 images')
+      return
     }
+
+    let geolocation = {}
+    let location
+
+    if (geolocationEnabled){
+      const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${address}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
+
+      const data = await response.json()
+
+      console.log(data.query.text);
+      geolocation.lat = data.features[0]?.geometry.coordinates[1] ?? 0
+      geolocation.lng = data.features[0]?.geometry.coordinates[0] ?? 0
+      location = data.features[0]?.properties.formatted ?? ''
+      console.log(geolocation.lat, geolocation.lng, location);
+
+      if (location === ''){
+        setLoading(false)
+        toast.error('Please enter a corrent address')
+      }
+  
+      
+    } else {
+      geolocation.lat = latitude
+      geolocation.lng = longitude
+      location = address
+    }
+    
+    setLoading(false)
 
   }
 
