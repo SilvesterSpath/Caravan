@@ -102,6 +102,11 @@ https://github.com/fkhadra/react-toastify
 
 100
   - if I use the geoapify third party api then when I fill out the latitude and longitude varibles, I have to use a '?' after data.features[0]?.geometry
+  - geoapify:
+  https://myprojects.geoapify.com/api/nCASbjXRwZmMMiMdLRVq/keys
+
+102
+  - Save listings to firestore
 
 
 // Protected routes in v6
