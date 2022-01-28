@@ -16,15 +16,17 @@ function Category() {
     const fetchListings = async ()=>{
       try {
         // Get reference
-        const listingsRef = collection(db, 'listings')        
+        const listingsRef = collection(db, 'listings')
+        console.log('listingsRef',listingsRef);   
         
         // Create a query
         const q = query(listingsRef, where('type', '==', params.categoryName), orderBy('timestamp', 'desc'), limit(10))        
 
         // Execute query
         const querySnap = await getDocs(q)
+        console.log('querySnap', querySnap);
 
-        const listings = []
+        const listings = []        
 
         querySnap.forEach((i)=>{
           return listings.push({
@@ -34,7 +36,7 @@ function Category() {
         })
 
         setListings(listings)
-        
+        console.log(listings);
         
         setLoading(false)
 

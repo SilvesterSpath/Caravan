@@ -8,12 +8,11 @@ import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
 import homeIcon from '../assets/svg/homeIcon.svg'
 
 
-
-
 function Profile() {
   const navigate = useNavigate()
   const auth = getAuth()
   const [changeDetails, setChangeDetails] = useState(false)
+  console.log(auth.currentUser.uid);
   
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,

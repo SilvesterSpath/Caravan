@@ -16,7 +16,8 @@ function Offers() {
     const fetchListings = async ()=>{
       try {
         // Get reference
-        const listingsRef = collection(db, 'listings')        
+        const listingsRef = collection(db, 'listings')
+        console.log(listingsRef);  
         
         // Create a query
         const q = query(listingsRef, where('offer', '==', true), orderBy('timestamp', 'desc'), limit(10))        

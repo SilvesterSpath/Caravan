@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from 'react'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import {getStorage, ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage'
 import {db} from '../firebase.config'
+import {addDoc, collection, doc, serverTimestamp} from 'firebase/firestore'
 import {useNavigate} from 'react-router-dom'
 import Spinner from '../components/Spinner'
 import {toast} from 'react-toastify'
@@ -13,8 +14,8 @@ function CreateListing() {
   const [formData, setFormData] = useState({
     type: 'rent',
     name: '',
-    bedrooms: 1,
-    bathrooms: 1,
+    bed: 1,
+    bath: 1,
     trailer: false,
     furnished: false,
     address: '',
@@ -26,7 +27,7 @@ function CreateListing() {
     longitude: 0 
   })
 
-  const {type, name, bathrooms, bedrooms, trailer, furnished, address, offer, regularPrice, discountPrice, images, latitude, longitude} = formData
+  const {type, name, bath, bed, trailer, furnished, address, offer, regularPrice, discountPrice, images, latitude, longitude} = formData
 
   const auth = getAuth()
   const navigate = useNavigate()
@@ -38,7 +39,7 @@ function CreateListing() {
         if(user){
           setFormData(f=>({...formData, userRef: user.uid}))
         }else{
-          navigate('sign-in')
+          navigate('/sign-in')
         }
       })
     }
@@ -83,37 +84,39 @@ function CreateListing() {
       if (location === ''){
         setLoading(false)
         toast.error('Please enter a corrent address')
+        return
       }
   
       
     } else {
       geolocation.lat = latitude
-      geolocation.lng = longitude
-      location = address
+      geolocation.lng = longitude      
     }
 
     // Store images in firebase
     const storeImage = async (image)=>{
       return new Promise((resolve, reject)=>{
         const storage = getStorage()
+        console.log('currentUser: ', auth.currentUser);
         const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`
 
         const storageRef = ref(storage, 'images/' + fileName)
 
         const uploadTask = uploadBytesResumable(storageRef, image)
 
-        uploadTask.on('state_changed', 
-  (snapshot) => {
+        uploadTask.on('state_changed', (snapshot) => {
 
     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
     console.log('Upload is ' + progress + '% done');
+    toast.success('Upload is ' + progress + '% done')
     switch (snapshot.state) {
       case 'paused':
         console.log('Upload is paused');
         break;
       case 'running':
-        console.log('Upload is running');
+        console.log('Upload is running');        
         break;
+      default:
     }
   }, 
   (error) => {
@@ -131,17 +134,34 @@ function CreateListing() {
       })
     }
 
-    const imgUrls = await Promise.all(
+    const imageUrls = await Promise.all(
       [...images].map((i)=>storeImage(i))
     ).catch(()=>{
       setLoading(false)
-      toast.error('Image is not uploaded')
+      toast.error('Images not uploaded')
       return
     })
 
-    console.log(imgUrls);
-    
+    const formDataCopy = {
+      ...formData, 
+      imageUrls,
+      geolocation,
+      timeStamp: serverTimestamp(),      
+    }
+
+    formDataCopy.location = address
+    delete formDataCopy.images
+    delete formDataCopy.address
+    delete formDataCopy.latitude
+    delete formDataCopy.longitude
+
+    location && (formDataCopy.location = location)
+    !formDataCopy.offer && delete formDataCopy.discountPrice
+
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy)        
     setLoading(false)
+    toast.success('Listings saved')
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`)
   }
 
   const onMutate = (e)=>{
@@ -155,7 +175,6 @@ function CreateListing() {
     }
 
     // Files
-
     if(e.target.files){
       console.log('files:', e.target.files);
       setFormData((prev)=>({
@@ -204,12 +223,12 @@ function CreateListing() {
 
         <div className="formRooms flex">
           <div>
-            <label className='formLabel'>Bedrooms</label>
-            <input type="number" className='formInputSmall' id='bedrooms' value={bedrooms} onChange={onMutate} min='1' max='50' required />            
+            <label className='formLabel'>Beds</label>
+            <input type="number" className='formInputSmall' id='bed' value={bed} onChange={onMutate} min='1' max='50' required />            
           </div>
           <div>
-          <label className='formLabel'>Bathrooms</label>
-            <input type="number" className='formInputSmall' id='bathrooms' value={bathrooms} onChange={onMutate} min='1' max='50' required />
+          <label className='formLabel'>Baths</label>
+            <input type="number" className='formInputSmall' id='bath' value={bath} onChange={onMutate} min='1' max='50' required />
           </div>
         </div>
         <label className='formLabel'>Trailer</label>
