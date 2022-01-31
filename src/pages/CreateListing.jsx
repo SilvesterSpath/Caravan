@@ -74,19 +74,17 @@ function CreateListing() {
       const response = await fetch(`https://api.geoapify.com/v1/geocode/search?text=${address}&apiKey=${process.env.REACT_APP_GEOCODE_API_KEY}`)
 
       const data = await response.json()
-
-      console.log(data.query.text);
+      
       geolocation.lat = data.features[0]?.geometry.coordinates[1] ?? 0
       geolocation.lng = data.features[0]?.geometry.coordinates[0] ?? 0
       location = data.features[0]?.properties.formatted ?? ''
-      console.log(geolocation.lat, geolocation.lng, location);
+      
 
       if (location === ''){
         setLoading(false)
         toast.error('Please enter a corrent address')
         return
-      }
-  
+      }      
       
     } else {
       geolocation.lat = latitude
@@ -97,7 +95,7 @@ function CreateListing() {
     const storeImage = async (image)=>{
       return new Promise((resolve, reject)=>{
         const storage = getStorage()
-        console.log('currentUser: ', auth.currentUser);
+        
         const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`
 
         const storageRef = ref(storage, 'images/' + fileName)
@@ -106,31 +104,23 @@ function CreateListing() {
 
         uploadTask.on('state_changed', (snapshot) => {
 
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-    toast.success('Upload is ' + progress + '% done')
-    switch (snapshot.state) {
-      case 'paused':
-        console.log('Upload is paused');
-        break;
-      case 'running':
-        console.log('Upload is running');        
-        break;
-      default:
-    }
-  }, 
-  (error) => {
-    // Handle unsuccessful uploads
-    reject(error)
-  }, 
-  () => {
-    // Handle successful uploads on complete
-    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      resolve(downloadURL);
-    });
-  }
-);
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          toast.success('Upload is ' + progress + '% done')
+
+        }, 
+        (error) => {
+          // Handle unsuccessful uploads
+          reject(error)
+        }, 
+        () => {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            resolve(downloadURL);
+          });
+        }
+        );
       })
     }
 
@@ -146,7 +136,7 @@ function CreateListing() {
       ...formData, 
       imageUrls,
       geolocation,
-      timeStamp: serverTimestamp(),      
+      timestamp: serverTimestamp(),      
     }
 
     formDataCopy.location = address
@@ -155,8 +145,10 @@ function CreateListing() {
     delete formDataCopy.latitude
     delete formDataCopy.longitude
 
-    location && (formDataCopy.location = location)
+    
     !formDataCopy.offer && delete formDataCopy.discountPrice
+
+    console.log(formDataCopy);
 
     const docRef = await addDoc(collection(db, 'listings'), formDataCopy)        
     setLoading(false)
@@ -164,29 +156,29 @@ function CreateListing() {
     navigate(`/category/${formDataCopy.type}/${docRef.id}`)
   }
 
-  const onMutate = (e)=>{
+  const onMutate = (e) => {
     let boolean = null
 
-    if(e.target.value === 'true'){
+    if (e.target.value === 'true') {
       boolean = true
     }
-    if(e.target.value === 'false'){
+    if (e.target.value === 'false') {
       boolean = false
     }
 
     // Files
-    if(e.target.files){
-      console.log('files:', e.target.files);
-      setFormData((prev)=>({
-        ...prev, 
-        images: e.target.files
+    if (e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        images: e.target.files,
       }))
     }
+
     // Text/Booleans/Numbers
-    if(!e.target.files){
-      setFormData((prev)=>({
-        ...prev,
-        [e.target.id]: boolean ?? e.target.value
+    if (!e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.id]: boolean ?? e.target.value,
       }))
     }
   }
