@@ -111,7 +111,12 @@ https://github.com/fkhadra/react-toastify
 104
   - display listing as we click on one 
   - we use 'auth' because we want to show a 'Connect' button when another user show our data
-  - 
+
+105
+  - in the 'Listing' page I create a 'share' icon in order to the user could copy and share the link with his/her friends
+
+106
+  - if the function is async in the 'useEffect' then we have to create inside useEffect an async function
 
 
 // Protected routes in v6

@@ -85,6 +85,15 @@ button {
   right: 20px;
 }
 
+.trailerIcon {
+  width: 32px;
+  height: 32px;
+  vertical-align: -45%;
+}
+pre {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .pageContainer,
 .offers,
 .profile,
@@ -570,6 +579,7 @@ button {
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   font-weight: 600;
+  color: black;
 }
 
 .contactListingName {
