@@ -118,6 +118,14 @@ https://github.com/fkhadra/react-toastify
 106
   - if the function is async in the 'useEffect' then we have to create inside useEffect an async function
 
+107
+  - 'leaflets' is an opensource javascript library
+  - leaflets.com/examples/quick-start
+
+108
+  - slideshow
+
+
 
 // Protected routes in v6
 // https://stackoverflow.com/questions/65505665/protected-route-with-firebase
