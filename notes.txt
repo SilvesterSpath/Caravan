@@ -123,7 +123,13 @@ https://github.com/fkhadra/react-toastify
   - leaflets.com/examples/quick-start
 
 108
-  - slideshow
+  - slideshow with swiper
+  - 'A11y' is the accessebility module
+  - We can import the scc directly
+  - In the SwiperSlide we use the images as background
+
+109
+  - Export Slider
 
 
 
