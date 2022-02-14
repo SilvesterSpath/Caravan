@@ -38,10 +38,8 @@ function Profile() {
           id: i.id,
           data: i.data()
         })
-      })
-
-      console.log(listings);
-     
+      })    
+      
       setListings(listings)
       setLoading(false)
     }
@@ -76,10 +74,17 @@ function Profile() {
   }
 
   const onChange = (e)=>{
-    setFormData((prev)=>({ ...prev, [e.target.id] : e.target.value     
-      
+    setFormData((prev)=>({ ...prev, [e.target.id] : e.target.value           
     }))
+  }
 
+  const onDelete = async (id, name)=>{
+    if(window.confirm('Are you sure you want to delete?')){
+      await deleteDoc(doc(db, 'listings', id))
+      const updatedListings = listings.filter((i)=> i.id !== id)
+      setListings(updatedListings)
+      toast.success(`Successfully deleted listing: ${name}`)
+    }    
   }
 
   if (loading){
@@ -118,9 +123,12 @@ function Profile() {
               <>
                 <p className="listingText">Your Listings</p>
                 <ul className='listingsList'>
-                  {listings.map((i, idx)=>(
-                    <listingItem/>
+                  
+                    {listings.map((i)=>(
+                    <ListingItem key={i.id} listing={i.data} id={i.id} onDelete={()=>onDelete(i.id, i.data.name)}/>
                   ))}
+                  
+                  
                 </ul>
               </>
             )}
