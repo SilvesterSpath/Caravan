@@ -1,18 +1,22 @@
 import {getAuth, updateProfile} from 'firebase/auth'
-import {updateDoc, doc} from 'firebase/firestore'
-import {useState} from 'react'
+import {updateDoc, doc, collection, getDocs, query, where, orderBy, deleteDoc} from 'firebase/firestore'
+import {useState, useEffect} from 'react'
 import {db} from '../firebase.config'
 import {useNavigate, Link} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg'
 import homeIcon from '../assets/svg/homeIcon.svg'
+import Spinner from '../components/Spinner'
+import ListingItem from '../components/ListingItem'
 
 
 function Profile() {
+  const [loading, setLoading] = useState(true)
+  const [listings, setListings] = useState(null)
   const navigate = useNavigate()
   const auth = getAuth()
   const [changeDetails, setChangeDetails] = useState(false)
-  console.log(auth.currentUser.uid);
+  
   
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
@@ -20,6 +24,31 @@ function Profile() {
   })
 
   const {name, email} = formData
+
+  useEffect(()=>{
+    const fetchUserListings = async ()=>{
+      const listingsRef = collection(db, 'listings')
+      const q = query(listingsRef, where('userRef', '==', auth.currentUser.uid), orderBy('timestamp', 'desc'))
+
+      const querySnap = await getDocs(q)
+      const listings = []
+
+      querySnap.forEach((i)=>{
+        return listings.push({
+          id: i.id,
+          data: i.data()
+        })
+      })
+
+      console.log(listings);
+     
+      setListings(listings)
+      setLoading(false)
+    }
+
+    fetchUserListings()
+
+  },[auth.currentUser.uid])
   
   const onLogout = ()=>{
     auth.signOut()
@@ -53,6 +82,10 @@ function Profile() {
 
   }
 
+  if (loading){
+    return <Spinner/>
+  }
+
   return (        
       <div className="profile">
         <header className="profileHeader">
@@ -80,6 +113,17 @@ function Profile() {
               <p>Sell or Rent your Camper</p>
               <img src={arrowRight} alt="arrow right" />
             </Link>
+
+            {!loading && listings?.length > 0 && (
+              <>
+                <p className="listingText">Your Listings</p>
+                <ul className='listingsList'>
+                  {listings.map((i, idx)=>(
+                    <listingItem/>
+                  ))}
+                </ul>
+              </>
+            )}
         </main>
       </div>    
   )
