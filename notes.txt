@@ -133,6 +133,9 @@ https://github.com/fkhadra/react-toastify
   - to enable the modules for swiper: SwiperCore.module([Navigation, Pagination, Scrollbar, A11y])
   - ${data.discountPrice ?? data.regularPrice} is equal to : {data.offer? 'Discount: $'+ data.discountPrice: 'Price: $'+data.regularPrice }
 
+111
+  - @TODO - without more listing 'Load More' paragraph should be invisible
+
 
 
 // Protected routes in v6
