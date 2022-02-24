@@ -136,6 +136,9 @@ https://github.com/fkhadra/react-toastify
 111
   - @TODO - without more listing 'Load More' paragraph should be invisible
 
+112
+  - Edit listing
+
 
 
 // Protected routes in v6

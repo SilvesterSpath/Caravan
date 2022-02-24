@@ -9,9 +9,7 @@ import ListingItem from '../components/ListingItem'
 function Offers() {
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [lastFetched, setLastFetched] = useState(null)
-
-  const params = useParams()
+  const [lastFetched, setLastFetched] = useState(null)  
     
   useEffect(()=>{
     const fetchListings = async ()=>{
