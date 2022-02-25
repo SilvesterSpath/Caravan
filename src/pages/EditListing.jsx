@@ -9,6 +9,7 @@ import {toast} from 'react-toastify'
 import {v4 as uuidv4} from 'uuid'
 
 function EditListing() {
+  // eslint-disable-next-line
   const [geolocationEnabled, setGeolocationEnabled] = useState(true)
   const [loading, setLoading] = useState(false)
   const [listing, setListing] = useState(false)
@@ -53,13 +54,13 @@ function EditListing() {
     // eslint-disable-next-line react-hooks/exhaustive-deps    
   }, [ isMounted ])
 
-  // Redirect if listing is not users
+  // Redirect if listing is not user's
   useEffect(()=>{
     if(listing && listing.userRef !== auth.currentUser.uid){
       toast.error('You can not edit that listing')
       navigate('/')
     }
-  },[])
+  })
 
   // Fetch listing to edit
   useEffect(()=>{

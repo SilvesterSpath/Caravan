@@ -1,3 +1,4 @@
+https://github.com/bradtraversy/house-marketplace
 -traversy gist
 Firebase Setup For House Marketplace
 
@@ -166,4 +167,3 @@ https://github.com/fkhadra/react-toastify
 
 
 
-https://github.com/bradtraversy/house-marketplace
