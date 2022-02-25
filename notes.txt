@@ -140,7 +140,19 @@ https://github.com/fkhadra/react-toastify
 112
   - Edit listing
   - I can have multiple useEffect in my code 
-  - 
+  
+Errors during deployment:
+Treating warnings as errors because of process.env.CI = true
+https://dev.to/kapi1/solved-treating-warnings-as-errors-because-of-process-env-ci-true-bk5
+
+    Log in to Netlify
+    Choose your app and click on Site settings
+    Navigate to Build & Deploy
+    Under Continuous Deployment select Edit settings
+    Update Build command to
+
+CI= npm run build
+
 
 
 
