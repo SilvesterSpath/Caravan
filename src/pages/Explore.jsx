@@ -7,12 +7,12 @@ import Slider from '../components/Slider'
 function Explore() {
 
   return (
-    <div className='explore'>      
+    <div className='explore'> 
+    <div className='feeling'>
       <header >
         <p className="pageHeader">Explore</p>
         <main >
           <Slider/>
-
           <p className="exploreCategoryHeading">Categories</p>
           <div className="exploreCategories" >
     {        <Link to={'/category/rent'}>
@@ -26,7 +26,7 @@ function Explore() {
           </div>
         </main>
       </header>
-      <footer ></footer>           
+      </div>                
     </div>
   )
 }

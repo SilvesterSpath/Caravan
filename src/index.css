@@ -146,6 +146,19 @@ pre {
 .pageHeader {
   font-size: 2rem;
   font-weight: 800;
+  
+}
+
+.feeling{
+  background-image: url('./assets/jpg/feeling.jpg');
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+  z-index: -10;
+
 }
 
 .navbar {
@@ -383,13 +396,7 @@ pre {
 .exploreCategories {
   display: flex;
   justify-content: space-between;
-  background-image: url('./assets/jpg/feeling.jpg');
-  width: 1000px;
-  height: 600px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 1.5rem
+
 }
 
 .exploreCategories a {
