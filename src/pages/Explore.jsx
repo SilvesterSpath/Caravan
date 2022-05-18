@@ -8,12 +8,13 @@ function Explore() {
 
   return (
     <div className='explore'> 
-    <div className='feeling'>
+    
       <header >
         <p className="pageHeader">Explore</p>
         <main >
           <Slider/>
           <p className="exploreCategoryHeading">Categories</p>
+          <div className='feeling'>
           <div className="exploreCategories" >
     {        <Link to={'/category/rent'}>
               <img src={rentCategoryImage} alt="rent" className='exploreCategoryImg' />
@@ -24,9 +25,10 @@ function Explore() {
               <p className="exploreCategoryName">Campers for sale</p>
             </Link>}
           </div>
+          </div> 
         </main>
       </header>
-      </div>                
+                     
     </div>
   )
 }
