@@ -3,17 +3,18 @@ import rentCategoryImage from '../assets/jpg/rentCategoryImage.jpg'
 import sellCategoryImage from '../assets/jpg/sellCategoryImage.jpg'
 import Slider from '../components/Slider'
 
+
 function Explore() {
+
   return (
-    <div className='explore'>
-      
-      <header>
+    <div className='explore'>      
+      <header >
         <p className="pageHeader">Explore</p>
-        <main>
+        <main >
           <Slider/>
 
           <p className="exploreCategoryHeading">Categories</p>
-          <div className="exploreCategories">
+          <div className="exploreCategories" >
     {        <Link to={'/category/rent'}>
               <img src={rentCategoryImage} alt="rent" className='exploreCategoryImg' />
               <p className="exploreCategoryName">Campers for rent</p>
@@ -25,7 +26,7 @@ function Explore() {
           </div>
         </main>
       </header>
-      
+      <footer ></footer>           
     </div>
   )
 }

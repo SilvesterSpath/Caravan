@@ -383,7 +383,15 @@ pre {
 .exploreCategories {
   display: flex;
   justify-content: space-between;
+  background-image: url('./assets/jpg/feeling.jpg');
+  width: 1000px;
+  height: 600px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1.5rem
 }
+
 .exploreCategories a {
   width: 48%;
 }
