@@ -16,13 +16,12 @@ function Navbar() {
     }
   }
 
-
   return (
     <footer className='navbar'>
       <nav className="navbarNav">
-        <ul className="navbarListItems">
-          <li className="navbarListItem" onClick={()=> navigate('/')}>
-            <FaCompass size={32} fill={pathMatchRoute('/') ? '#2c2c2c': 'white'} width='36px' height='36px'/>
+        <ul className="navbarListItems">        
+          <li className="navbarListItem"  onClick={()=> navigate('/')}>
+            <FaCompass size={32} style={{transform: "rotate(90deg)"}} fill={pathMatchRoute('/') ? '#2c2c2c': 'white'} width='36px' height='36px'/>
             <p className={pathMatchRoute('/')? 'navbarListItemNameActive': 'navbarListItemName'}>Explore</p>
           </li>
           <li className="navbarListItem"  onClick={()=> navigate('/offers')}>
@@ -34,6 +33,7 @@ function Navbar() {
             <p className={pathMatchRoute('/sign-in')? 'navbarListItemNameActive': 'navbarListItemName'}>Profile</p>
           </li>
         </ul>
+        
       </nav>
       
     </footer>
