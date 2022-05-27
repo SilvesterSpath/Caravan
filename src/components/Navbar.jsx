@@ -21,7 +21,7 @@ function Navbar() {
       <nav className="navbarNav">
         <ul className="navbarListItems">        
           <li className="navbarListItem"  onClick={()=> navigate('/')}>
-            <FaCompass size={32} style={{transform: "rotate(90deg)"}} fill={pathMatchRoute('/') ? '#2c2c2c': 'white'} width='36px' height='36px'/>
+            <FaCompass size={32} style={{transform: "rotate(90deg)"}} className="spinner" fill={pathMatchRoute('/') ? '#2c2c2c': 'white'} width='36px' height='36px'/>
             <p className={pathMatchRoute('/')? 'navbarListItemNameActive': 'navbarListItemName'}>Explore</p>
           </li>
           <li className="navbarListItem"  onClick={()=> navigate('/offers')}>
