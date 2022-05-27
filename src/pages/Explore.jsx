@@ -13,8 +13,7 @@ function Explore() {
         <p className="pageHeader">Explore</p>
         <main >
           <Slider/>
-          <p className="exploreCategoryHeading">Categories</p>
-          <div className='feeling'>
+          <p className="exploreCategoryHeading">Categories</p>          
           <div className="exploreCategories" >
     {        <Link to={'/category/rent'}>
               <img src={rentCategoryImage} alt="rent" className='exploreCategoryImg' />
@@ -24,8 +23,7 @@ function Explore() {
               <img src={sellCategoryImage} alt="sell" className='exploreCategoryImg' />
               <p className="exploreCategoryName">Campers for sale</p>
             </Link>}
-          </div>
-          </div> 
+          </div>           
         </main>
       </header>
                      

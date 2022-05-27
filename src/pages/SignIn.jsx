@@ -66,7 +66,7 @@ function SignIn() {
           </form>
 
           <OAth/>
-
+          
           <Link to='/sign-up' className="registerLink">Sign Up Instead</Link>
         </main>
       </div>
