@@ -12,9 +12,9 @@
 
 :root {
   --main-color: white;
-  --secondary-color: #00cc66;
+  --primary-color: #aeb8c7;
+  --secondary-color: #066002;  
 }
-
 
 * {
   box-sizing: border-box;
@@ -28,7 +28,7 @@ html::-webkit-scrollbar {
 body {
   font-family: 'indiana', sans-serif;
   letter-spacing: 1.5px;
-  background-color: #8591A3;  
+  background-color: var(--primary-color);  
   color: var(--main-color);
   margin: 0;
   box-sizing: border-box;
@@ -38,6 +38,11 @@ a {
   text-decoration: none;
   display: block;
   color: #000000;
+}
+
+form {
+  /* color: #8591A3; */
+  color: white;
 }
 
 button {
@@ -190,8 +195,8 @@ pre {
   bottom: 0;
   right: 0;
   height: 85px;
-  background-color: #8591A3;  
-  opacity: 0.9;
+  background-color: var(--primary-color);  
+  
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -279,6 +284,7 @@ pre {
 .signInText,
 .signUpText {
   cursor: pointer;
+  color: white;
 }
 @media (min-width: 1024px) {
   .signInBar,
@@ -291,6 +297,7 @@ pre {
 .signUpText {
   font-size: 1.5rem;
   font-weight: 700;
+  color: white;
 }
 
 .signInButton,
@@ -714,6 +721,7 @@ pre {
   display: flex;
   flex-direction: column;
 }
+
 
 .profileName,
 .profileEmail,

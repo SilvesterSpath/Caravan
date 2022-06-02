@@ -13,8 +13,8 @@ function ListingItem({listing, id, onEdit, onDelete}) {
           {listing.location}
         </p>
         <p className="categoryListingName">{listing.name}</p>
-        <p className="categoryListingPrice">{listing.offer ? `Offer: $${listing.discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` : listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}{listing.type === 'rent' && ' /Month'}</p>
-        <p className="categoryListingPrice">Regular Price: ${listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+        <p className="categoryListingPrice">{listing.offer ? `Offer: ${listing.discountPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} ${listing.type === 'rent' && ' /Month'}`  :  ''}</p>
+        <p className="categoryListingPrice">{listing.offer && 'Regular'}Price: ${listing.regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
         {listing.type === 'rent' && ' /Month'}</p>
         <div className="categoryListingInfoDiv">
           <img src={bedIcon} alt="bed" />

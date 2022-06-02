@@ -113,7 +113,7 @@ function EditListing() {
 
       if (location === ''){
         setLoading(false)
-        toast.error('Please enter a corrent address')
+        toast.error('Please enter a correct address')
         return
       }      
       

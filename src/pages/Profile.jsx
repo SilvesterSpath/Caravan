@@ -119,7 +119,7 @@ function Profile() {
           </div>
             <Link to='/create-listing' className='createListing'>
               <img src={homeIcon} alt="home" />
-              <p>Sell or Rent your Camper</p>
+              <p style={{color: '#8591A3'}}>Sell or Rent your Camper</p>
               <img src={arrowRight} alt="arrow right" />
             </Link>
 
