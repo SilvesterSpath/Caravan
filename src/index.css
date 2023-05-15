@@ -6,14 +6,14 @@
 }
 
 @font-face {
-  font-family: indiana2; 
+  font-family: indiana2;
   src: url('./assets/fonts/Fedora.ttf');
 }
 
 :root {
   --main-color: white;
-  --primary-color: #aeb8c7;
-  --secondary-color: #066002;  
+  --primary-color: #c2c2c2;
+  --secondary-color: #066002;
 }
 
 * {
@@ -22,13 +22,12 @@
 
 html::-webkit-scrollbar {
   display: none;
-  
 }
 
 body {
   font-family: 'indiana', sans-serif;
   letter-spacing: 1.5px;
-  background-color: var(--primary-color);  
+  background-color: var(--primary-color);
   color: var(--main-color);
   margin: 0;
   box-sizing: border-box;
@@ -156,7 +155,8 @@ pre {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: var(--secondary-color) transparent var(--secondary-color) transparent;
+  border-color: var(--secondary-color) transparent var(--secondary-color)
+    transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
@@ -173,11 +173,10 @@ pre {
   font-family: indiana2;
   font-size: 3rem;
   font-weight: 800;
-  
 }
 
-.feeling{
-  /* background-image: url('./assets/jpg/feeling.jpg'); */  
+.feeling {
+  /* background-image: url('./assets/jpg/feeling.jpg'); */
   width: 100%;
   height: 500px;
   background-position: center;
@@ -195,8 +194,8 @@ pre {
   bottom: 0;
   right: 0;
   height: 85px;
-  background-color: var(--primary-color);  
-  
+  background-color: var(--primary-color);
+
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -221,7 +220,7 @@ pre {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
 }
 
 .navbarListItemName,
@@ -230,7 +229,6 @@ pre {
   font-size: 14px;
   font-weight: 600;
   color: var(--main-color);
-  
 }
 .navbarListItemNameActive {
   color: #2c2c2c;
@@ -409,7 +407,7 @@ pre {
 }
 
 .swiperSlidePrice {
-  color: #8591A3;
+  color: #8591a3;
   position: absolute;
   top: 143px;
   left: 11px;
@@ -427,9 +425,8 @@ pre {
 }
 
 .exploreCategories {
-  display: flex;  
+  display: flex;
   justify-content: space-between;
-
 }
 
 .exploreCategories a {
@@ -722,7 +719,6 @@ pre {
   flex-direction: column;
 }
 
-
 .profileName,
 .profileEmail,
 .profileAddress,
@@ -910,10 +906,10 @@ pre {
 }
 
 @keyframes spin {
-from {
-  transform: rotate(0deg);
-}
-to {
-  transform: rotate(360deg);
-}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
